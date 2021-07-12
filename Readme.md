@@ -9,6 +9,9 @@ Las rutas y la lógica se encuentran separadas
 1. [Express](https://github.com/expressjs/express, "express") Nos permite manejar las rutas de nuestro servidor. 
 2. [cors](https://github.com/expressjs/cors, "cors") Es un middleware que nos permite solicitar recursos a una página web que se encuentre en otro dominio. Si no tenemos el [cors](https://es.wikipedia.org/wiki/Intercambio_de_recursos_de_origen_cruzado, "corsWiki") configurado.
 3. [dotenv](https://www.npmjs.com/package/dotenv, "dotenv") Este módulo carga como variables globales lo que introduzcamos en el archivo `.env`. En esta aplicación se utiliza para indicar en número de puerto.
+4. [Mongoose](https://mongoosejs.com/, "mongoose")
+5. [BcryptJS](https://www.npmjs.com/package/bcryptjs, "bcrypt") Utilizamos este paquete para encriptar las contraseñas de los usuarios.
+6. [Express-validator](https://express-validator.github.io/docs/, "express-validator") Paquete utilizado para validar el email
 
 ## Algunos tips 📌
 
