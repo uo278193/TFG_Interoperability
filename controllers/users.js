@@ -1,5 +1,6 @@
 const { response, request } = require('express')
 const bcryptjs =  require('bcryptjs')
+
 const User = require('../models/user')
 
 const usersGet = (req = request, res = response) => {
@@ -15,14 +16,23 @@ const usersGet = (req = request, res = response) => {
     })
   }
 
-const usersPut = (req = request, res = response) => {
+const usersPut = async (req = request, res = response) => {
 
     const { id } = req.params
+    const { _id, password, google, email, ...other } = req.body
+    
+    //TODO validate against database
+    if( password ) {
+        const salt = bcryptjs.genSaltSync();
+        other.password = bcryptjs.hashSync(password, salt);
+    }
+    
+    const user = await User.findByIdAndUpdate( id, other )
 
     res.json({
         message: 'put API - controller',
         status: 'cool',
-        id
+        user
     })
 }
 
@@ -30,17 +40,6 @@ const usersPost = async (req, res = response) => {
 
     const { name, password, role, email } = req.body
     const user = new User( {name, password, role, email} )
-
-    //check if email exists
-    const emailExists = await User.findOne({ email })
-   // emailExists = false
-    
-    
-    if ( emailExists ) {
-        return res.status(400).json({
-            msg: "email already exists"
-        })
-    }
 
     //encrypt password
     const salt = bcryptjs.genSaltSync();
@@ -51,7 +50,6 @@ const usersPost = async (req, res = response) => {
 
     res.json({
         message: 'post API - controller',
-        status: 'cool',
         user
     })
 }

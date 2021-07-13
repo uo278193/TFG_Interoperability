@@ -32,8 +32,7 @@ class Server {
     }
 
     async dbConnect() {
-        await dbConnection()
-        
+        await dbConnection()  
     }
  
     routes() {
