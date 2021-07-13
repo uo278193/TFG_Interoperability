@@ -2,7 +2,7 @@
 
 Una plantilla de un webserver utilizando Express y cors. A partir de este este esqueleto 💀 ⚒️ podemos dearrollar todo lo necesario para desplegar una aplicación de NodeJS.
 
-Las rutas y la lógica se encuentran separadas
+Las rutas y la lógica se encuentran separadas.
 
 En la versión actual se añaden un par de Schemas para que sirvan de referencia en futuras aplicaciones
 
