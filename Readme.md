@@ -4,6 +4,8 @@ Una plantilla de un webserver utilizando Express y cors. A partir de este este e
 
 Las rutas y la lógica se encuentran separadas
 
+En la versión actual se añaden un par de Schemas para que sirvan de referencia en futuras aplicaciones
+
 ## Dependencias
 
 1. [Express](https://github.com/expressjs/express, "express") Nos permite manejar las rutas de nuestro servidor. 
