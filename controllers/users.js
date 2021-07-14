@@ -3,16 +3,22 @@ const bcryptjs =  require('bcryptjs')
 
 const User = require('../models/user')
 
-const usersGet = (req = request, res = response) => {
+const usersGet = async (req = request, res = response) => {
 
-    const {id= 1, limit = 10, name = "no name"} = req.query
+    //const {id= 1, limit = 10, name = "no name"} = req.query
+    const { limite = 5, desde = 0 } = req.query
+    const queryStatements = { state: true}
+
+    const [ total, users ] = await Promise.all([
+        User.countDocuments( queryStatements ),
+        User.find( queryStatements )
+            .limit( Number(limite) )
+            .skip( Number(desde) )
+    ])
 
     res.json({
-        message: 'get API - controller',
-        status: 'cool! 👍',
-        id,
-        limit,
-        name,
+        total,
+        users
     })
   }
 
@@ -30,8 +36,6 @@ const usersPut = async (req = request, res = response) => {
     const user = await User.findByIdAndUpdate( id, other )
 
     res.json({
-        message: 'put API - controller',
-        status: 'cool',
         user
     })
 }
@@ -61,7 +65,15 @@ const usersPatch = (req, res = response) => {
     })
 }
 
-const usersDelete = (req, res = response) => {
+const usersDelete = async (req, res = response) => {
+
+    const { id } = req.params
+
+    //Delete from db. Bad idea, you lose the data integrity reference
+    //const user = await User.findByIdAndDelete( id )
+
+    const user = await User.findByIdAndUpdate( id, {state: false} )
+
     res.json({
         message: 'delete API - controller',
         status: 'cool'

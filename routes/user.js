@@ -33,6 +33,6 @@ router.post('/', [
 
 router.patch('/', usersPatch) 
 
-router.delete('/', usersDelete)
+router.delete('/:id', usersDelete)
 
 module.exports = router
