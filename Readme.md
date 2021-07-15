@@ -14,6 +14,7 @@ En la versión actual se añaden un par de Schemas para que sirvan de referencia
 4. [Mongoose](https://mongoosejs.com/, "mongoose")
 5. [BcryptJS](https://www.npmjs.com/package/bcryptjs, "bcrypt") Utilizamos este paquete para encriptar las contraseñas de los usuarios.
 6. [Express-validator](https://express-validator.github.io/docs/, "express-validator") Paquete utilizado para validar el email
+7. [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken, "jsonwebtoken") Utilizamos este paquete para la creación de los tokens necesarios en el proceso de autentificación con la base de datos. En esta web [JWT](https://jwt.io/, "JWT") podemos simular tokens.
 
 ## Algunos tips 📌
 
