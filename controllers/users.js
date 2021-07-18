@@ -68,6 +68,7 @@ const usersPatch = (req, res = response) => {
 const usersDelete = async (req, res = response) => {
 
     const { id } = req.params
+    const { authUser } = req
 
     //Delete from db. Bad idea, you lose the data integrity reference
     //const user = await User.findByIdAndDelete( id )
@@ -75,8 +76,9 @@ const usersDelete = async (req, res = response) => {
     const user = await User.findByIdAndUpdate( id, {state: false} )
 
     res.json({
-        message: 'delete API - controller',
-        status: 'cool'
+        msg: "Delete",
+        authUser,
+        user
     })
 }
 
