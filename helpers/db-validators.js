@@ -24,7 +24,7 @@ const isEmailOk = async (email = '') => {
 const existsUserById = async (id) => {
 
     const userExists = await User.findById(id)
-//console.log(userExists)
+
     if (!userExists) {
         throw new Error(`Id ${ id } dont exist`)
     }
