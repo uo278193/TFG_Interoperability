@@ -22,7 +22,7 @@ const validateJWT = async ( req = request, res = response, next ) => {
         //chaeck if user exists
         if( !authUser) {
             return res.status(401).json({
-                msg: "User doesn´t exists in DB"
+                msg: "Invalid Token - User doesn´t exists in DB"
             })
         }
 
