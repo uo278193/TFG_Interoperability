@@ -32,4 +32,5 @@ const existsUserById = async (id) => {
 
 module.exports = {isRoleOk,
                     isEmailOk,
-                    existsUserById}
+                    existsUserById
+                }

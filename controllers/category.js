@@ -1,13 +1,12 @@
-const { response } = require("express");
+const { response } = require("express")
+
 const { Category } = require('../models')
 
-const createCategory = async (req, res = response) => {
+const createCategory = async(req, res = response) => {
 
     const name = req.body.name.toUpperCase();
-
-    try{
-
-        const categoryDB = await Category.findOne({ name })
+        
+        const categoryDB =  await Category.findOne({ name })
 
         if ( categoryDB ) {
             return res.status(400).json({
@@ -22,16 +21,9 @@ const createCategory = async (req, res = response) => {
 
         const category = new Category( data )
 
-        await category.save()
-        res.status(201).json(category)
-
-    } catch(error) {
-        console.log(error)
-        return res.json({
-            msg: "Talk with the App Admin"
-        })
-
-    }
+         await category.save()
+        
+        return res.status(201).json(category)
 
 } 
 

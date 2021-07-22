@@ -17,6 +17,7 @@ const validateJWT = async ( req = request, res = response, next ) => {
     try {
 
         const { uid }  = jwt.verify(token, process.env.SECRETANDPRIVATEKEY)
+
         const authUser = await User.findById( uid )
 
         //chaeck if user exists
@@ -40,13 +41,11 @@ const validateJWT = async ( req = request, res = response, next ) => {
 
     } catch (error) {
         console.log(error)
-        return res.status(400).json({
+        return res.status(401).json({
             msg: 'Invalid Token'
         })
     }
 
-    
-    next()
 }
 
 module.exports = { 
