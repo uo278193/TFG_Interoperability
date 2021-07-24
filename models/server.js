@@ -14,6 +14,7 @@ class Server {
             auth: '/api/auth',
             users: '/api/users',
             categories: '/api/categories',
+            items: '/api/items'
         }
  
         //Connection to DB
@@ -44,6 +45,7 @@ class Server {
         this.app.use( this.paths.auth, require('../routes/auth') )
         this.app.use( this.paths.users, require('../routes/user') )
         this.app.use( this.paths.categories, require('../routes/categories') )
+        this.app.use( this.paths.items, require('../routes/item') )
     }
     
     listen() {

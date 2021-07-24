@@ -7,7 +7,7 @@ const usersGet = async (req = request, res = response) => {
 
     //const {id= 1, limit = 10, name = "no name"} = req.query
     const { limite = 5, desde = 0 } = req.query
-    const queryStatements = { state: true}
+    const queryStatements = { state: true }
 
     const [ total, users ] = await Promise.all([
         User.countDocuments( queryStatements ),
@@ -27,7 +27,7 @@ const usersPut = async (req = request, res = response) => {
     const { id } = req.params
     const { _id, password, google, email, ...other } = req.body
     
-    //TODO validate against database
+    //validate against database
     if( password ) {
         const salt = bcryptjs.genSaltSync();
         other.password = bcryptjs.hashSync(password, salt);
