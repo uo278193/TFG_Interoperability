@@ -14,7 +14,8 @@ class Server {
             auth: '/api/auth',
             users: '/api/users',
             categories: '/api/categories',
-            items: '/api/items'
+            items: '/api/items',
+            searchs: '/api/searches'
         }
  
         //Connection to DB
@@ -46,6 +47,7 @@ class Server {
         this.app.use( this.paths.users, require('../routes/user') )
         this.app.use( this.paths.categories, require('../routes/categories') )
         this.app.use( this.paths.items, require('../routes/item') )
+        this.app.use( this.paths.searchs, require('../routes/search') )
     }
     
     listen() {
