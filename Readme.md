@@ -16,6 +16,9 @@ En la versión actual se añaden un par de Schemas para que sirvan de referencia
 6. [Express-validator](https://express-validator.github.io/docs/, "express-validator") Paquete utilizado para validar el email
 7. [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken, "jsonwebtoken") Utilizamos este paquete para la creación de los tokens necesarios en el proceso de autentificación con la base de datos. En esta web [JWT](https://jwt.io/, "JWT") podemos simular tokens.
 8. [google-auth-library](https://www.npmjs.com/package/google-auth-library) Gracias a esta librería integraremos cierta información de nuestra cuenta de Google y la utilizaremos para crear usuarios en nuestra aplicación. Tenemos que hacer un poco de refactorización de código de la [doc de Google](https://developers.google.com/identity/sign-in/web/backend-auth).
+9. [express-fileupload](https://github.com/richardgirges/express-fileupload) Este paquete nos ayudará a gestionar la subida de archivos.
+10. [uuid](https://www.npmjs.com/package/uuid) Esta dependencia será la utilizada para generar los ids de las imagenes.
+11. [Cloudinary](https://www.npmjs.com/package/cloudinary) Este paquete nos servirá para almacenar nuestras imagenes en nuestro repositorio de [Cloudinary](https://cloudinary.com/).
 
 ## Algunos tips 📌
 

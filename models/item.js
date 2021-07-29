@@ -31,6 +31,9 @@ const ItemSchema = Schema({
     available:{
         type:Boolean,
         default:true
+    },
+    img:{
+        type: String
     }
 
 })
