@@ -17,7 +17,7 @@ const login = async (req, res = response) => {
 
         if(!user){
             return res.status(400).json({
-                msg: "User / Password dont exist - email"
+                msg: "User / Email dont exist - email"
             })
         }
 
@@ -58,7 +58,7 @@ const login = async (req, res = response) => {
 
 const googleSignin = async (req, res = response) => {
 
-    const { id_token } = req.body
+    const { id_token } = req.body 
 
     try {
         const googleUser = await googleVerify( id_token )

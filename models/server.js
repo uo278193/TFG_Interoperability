@@ -30,6 +30,14 @@ class Server {
 
     middlewares() {
 
+        this.app.use((req, res, next) => {
+            res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+            next();
+          });
+
+        //Supuestamente para enviart datos de formularios al backend
+        this.app.use(express.urlencoded({ extended: true }));
+        
         //CORS
         this.app.use( cors() )
 

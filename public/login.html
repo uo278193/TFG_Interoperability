@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/style/styles.css">
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/api/auth/login">Login</a></li>
+        </ul>
+    </nav>
+    <h1>Login</h1>
+    <form action="/api/auth/login" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>   
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <button><a href="/api/auth/singup">Sing Up</a></button>
+
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="713188700274-j3iirib1j0qvd0n5b63eirvb67k7in6o.apps.googleusercontent.com"
+         data-callback="onSignIn">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+    
+    
+    <script>
+  // Obtén el formulario y maneja el evento de submit
+  const form = document.getElementById('login-form');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevenir el envío del formulario tradicional
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const data = { email, password };
+
+    try {
+      // Realizar la solicitud POST usando fetch
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Asegúrate de enviar los datos como JSON
+        },
+        body: JSON.stringify(data), // Convierte el objeto JavaScript en una cadena JSON
+      });
+
+      const result = await response.json();
+      
+      if (response.ok) {
+        console.log('Login successful:', result);
+        // Aquí puedes hacer algo con el token o los datos recibidos
+      } else {
+        console.log('Error:', result);
+      }
+    } catch (error) {
+      console.log('Error en la solicitud:', error);
+    }
+  });
+</script>
+    
+
+    <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+
+    <script>
+
+
+
+        var url = ( window.location.hostname.includes('localhost') )
+                    ?'http://localhost:8080/api/auth/google'
+                    :'https://restserver-example-v1.herokuapp.com/api/auth/google'
+    
+        function onSignIn(googleUser) {
+            console.log("Entrado en onSignIn");
+                    
+                    // Utilizar `googleUser.credential` directamente como `id_token`
+                    const id_token = googleUser.credential;
+                    console.log("ID Token:", id_token);
+
+                    // Enviar el id_token al backend
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({  id_token })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Respuesta del backend:', data);
+                    })
+                    .catch(error => console.error('Error:', error));
+        }
+
+        function decodeJwtResponse(token) {
+        // Divide el token en sus tres partes (header, payload y signature)
+        const base64Url = token.split('.')[1]; // Solo la parte del payload (posición 1)
+        
+        // Decodifica el payload de Base64
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const decodedPayload = decodeURIComponent(
+            atob(base64)
+            .split('')
+            .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+            .join('')
+        );
+
+        // Parsea el JSON y devuelve el objeto resultante
+        return JSON.parse(decodedPayload);
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+        }
+
+    </script>
+</body>
+</html>
