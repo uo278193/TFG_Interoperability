@@ -6,19 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-signin-client_id" content="713188700274-j3iirib1j0qvd0n5b63eirvb67k7in6o.apps.googleusercontent.com">
     <div class="g-signin2" data-onsuccess="handleCredentialResponse"></div>
-    <link rel="stylesheet" href="/style/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 
     <title>Google Singin</title>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/api/auth/login">Login</a></li>
-        </ul>
-        <div id="user-email"></div>
-    </nav>
+    <%- include('partials/_nav') %>
     <main>
         <h1>Página de inicio</h1>
         <h2>Bienvenido a mi aplicación Node.js</h2>

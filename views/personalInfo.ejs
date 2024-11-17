@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 
     <title>Google Singin</title>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/api/auth/login">Login</a></li>
-        </ul>
-        <a>Usuario: <%=user%> </a>
-    </nav>
+    <%- include('partials/_nav') %>
     <main>
         <h1>Informacion personal</h1>
         <h2>Bienvenido a mi aplicación Node.js</h2>

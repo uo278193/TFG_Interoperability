@@ -23,6 +23,9 @@ router.post('/google',[
     validateFields
 ],googleSignin)
 
+router.get('/personalinfo', (req, res) => {
+    res.render('personalinfo')
+});
 
 router.get('/login', (req, res) => {
     res.render('login')

@@ -5,7 +5,7 @@ const { response, request } = require('express')
 
 const index = async (req = request, res = response) => {
 try{
-    res.render('index')
+    res.render('index' )
 }catch{
     console.log(error)
     return res.json({

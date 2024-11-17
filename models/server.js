@@ -3,7 +3,8 @@ const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
 const { dbConnection } = require('../database/config')
-
+const { validateJWT,validateJWTForViews } = require('../middlewares/validate-jwt')
+const path = require('path');
 
 class Server {
 
@@ -27,19 +28,23 @@ class Server {
         this.middlewares()
 
         this.routes()
+
     }
 
     middlewares() {
 
         this.app.set('view engine','ejs')
-        this.app.set('views', './public');
+        // this.app.set('views', path.join(__dirname, '../views'));
+
 
         this.app.use((req, res, next) => {
             res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
             next();
           });
+        //Comprobamos token y lo mostramos en todas las vistas
+        this.app.use(validateJWTForViews);
 
-        //Supuestamente para enviart datos de formularios al backend
+        //Supuestamente para enviar datos de formularios al backend
         this.app.use(express.urlencoded({ extended: true }));
         
         //CORS
@@ -49,7 +54,7 @@ class Server {
         this.app.use( express.json() )
          
         //Public directory
-        this.app.use( express.static('public') )
+        this.app.use(express.static(path.join(__dirname, '../public')));
 
         //Upload files
         this.app.use( fileUpload({
@@ -57,6 +62,9 @@ class Server {
             tempFileDir : '/tmp/',
             createParentPath: true
         }))
+
+        
+
     }
 
     async dbConnect() {
