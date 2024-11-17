@@ -40,11 +40,11 @@ const login = async (req, res = response) => {
         //Generate JWT
 
         const token = await generateJWT(user.id)
-
-        res.json({
-            user,
-            token
-        })
+        res.render('personalinfo',{user:user.email,token:token})
+        // res.json({
+        //     user,
+        //     token
+        // })
 
 
     } catch(error) {

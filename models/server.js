@@ -12,6 +12,7 @@ class Server {
         this.port = process.env.PORT
 
         this.paths = {
+            index: '/',
             auth: '/api/auth',
             users: '/api/users',
             categories: '/api/categories',
@@ -29,6 +30,9 @@ class Server {
     }
 
     middlewares() {
+
+        this.app.set('view engine','ejs')
+        this.app.set('views', './public');
 
         this.app.use((req, res, next) => {
             res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
@@ -60,6 +64,7 @@ class Server {
     }
  
     routes() {
+        this.app.use(this.paths.index,require('../routes/index') )
         this.app.use( this.paths.auth, require('../routes/auth') )
         this.app.use( this.paths.users, require('../routes/user') )
         this.app.use( this.paths.categories, require('../routes/categories') )

@@ -10,11 +10,12 @@ const router = Router()
 const path = require('path');
 
 
+
 router.post('/login', [
     check('email', 'Email is mandatory').isEmail(),  // Validación de email
     check('password', 'Password is mandatory').not().isEmpty(),  // Validación de password
-    validateFields  // Middleware para validar errores
-], login);
+    validateFields,  // Middleware para validar errores
+] , login)
 
 
 router.post('/google',[
@@ -24,11 +25,11 @@ router.post('/google',[
 
 
 router.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/login.html'));
+    res.render('login')
 });
 
 router.get('/singup', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/singup.html'));
+    res.render('singup')
 });
 
 
