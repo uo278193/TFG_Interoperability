@@ -8,6 +8,7 @@ const { login, googleSignin , logout } = require('../controllers/auth')
 const router = Router()
 
 const path = require('path');
+const { validateJWT } = require('../middlewares/validate-jwt')
 
 
 
@@ -24,11 +25,8 @@ router.post('/google',[
     validateFields
 ],googleSignin)
 
-router.get('/personalinfo', (req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/api/auth/login'); // Redirigir si no está logueado
-    }
-    res.render('personalinfo',{user:req.session.user});
+router.get('/personalinfo',validateJWT,(req, res) => {
+    res.render('personalinfo');
 });
 
 router.get('/login', (req, res) => {

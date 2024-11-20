@@ -65,7 +65,7 @@ class Server {
 
         //session
         this.app.use(session({
-            secret: 'tu_clave_secreta',
+            secret: process.env.SECRETANDPRIVATEKEY,
             resave: false,
             saveUninitialized: false,
             cookie: { secure: false } // Pon esto en true si usas HTTPS

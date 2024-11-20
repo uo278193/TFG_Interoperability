@@ -38,18 +38,17 @@ const login = async (req, res = response) => {
         }
 
 
-        req.session.user = {
-            email: user.email
-        };
+      
 
         //Generate JWT
         const token = await generateJWT(user.id)
-        console.log("user:" + user + "-token:" + token)
+
+        req.session.user = {
+            email: user.email,
+            token:token
+        };
         res.render('personalinfo',{user:user.email,token:token})
-        // res.json({
-        //     user,
-        //     token
-        // })
+        
 
 
     } catch(error) {
