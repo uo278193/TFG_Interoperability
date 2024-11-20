@@ -37,9 +37,14 @@ const login = async (req, res = response) => {
             })
         }
 
-        //Generate JWT
 
+        req.session.user = {
+            email: user.email
+        };
+
+        //Generate JWT
         const token = await generateJWT(user.id)
+        console.log("user:" + user + "-token:" + token)
         res.render('personalinfo',{user:user.email,token:token})
         // res.json({
         //     user,
@@ -55,6 +60,18 @@ const login = async (req, res = response) => {
 
     }
 }
+
+
+const logout = (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ msg: "Error al cerrar sesión" });
+        }
+        res.redirect('/'); // Redirige al inicio tras el logout
+    });
+};
+
 
 const googleSignin = async (req, res = response) => {
 
@@ -106,5 +123,6 @@ const googleSignin = async (req, res = response) => {
 
 module.exports = {
     login,
-    googleSignin
+    googleSignin,
+    logout
 }

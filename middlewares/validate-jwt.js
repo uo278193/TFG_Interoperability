@@ -56,16 +56,16 @@ const validateJWTForViews = async (req = request, res = response, next) => {
             const authUser = await User.findById(uid);
 
             if (authUser && authUser.state) {
-                console.log(authUser)
-                res.locals.user = authUser; // Inyecta el usuario en res.locals para todas las vistas
+                
+                req.session.user = authUser; // Inyecta el usuario en res.locals para todas las vistas
             }
         } catch (error) {
             console.log('Token inválido o error:', error);
-            res.locals.user = null;
+            req.session.user = null;
         }
     }else{
-        console.log("user null")
-        res.locals.user = null;
+       
+        req.session.user = null;
     }
 
     next(); // No bloquear el acceso, solo inyectar el usuario si es válido

@@ -3,7 +3,7 @@ const { check } = require('express-validator')
 
 const { validateFields } = require('../middlewares/validate-fields')
 
-const { login, googleSignin } = require('../controllers/auth')
+const { login, googleSignin , logout } = require('../controllers/auth')
 
 const router = Router()
 
@@ -17,6 +17,7 @@ router.post('/login', [
     validateFields,  // Middleware para validar errores
 ] , login)
 
+router.post('/logout',logout)
 
 router.post('/google',[
     check('id_token','id_token is mandatory').not().isEmpty(),
@@ -24,7 +25,10 @@ router.post('/google',[
 ],googleSignin)
 
 router.get('/personalinfo', (req, res) => {
-    res.render('personalinfo')
+    if (!req.session.user) {
+        return res.redirect('/api/auth/login'); // Redirigir si no está logueado
+    }
+    res.render('personalinfo',{user:req.session.user});
 });
 
 router.get('/login', (req, res) => {

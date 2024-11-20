@@ -5,6 +5,7 @@ const fileUpload = require('express-fileupload')
 const { dbConnection } = require('../database/config')
 const { validateJWT,validateJWTForViews } = require('../middlewares/validate-jwt')
 const path = require('path');
+const session = require('express-session');
 
 class Server {
 
@@ -41,8 +42,7 @@ class Server {
             res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
             next();
           });
-        //Comprobamos token y lo mostramos en todas las vistas
-        this.app.use(validateJWTForViews);
+       
 
         //Supuestamente para enviar datos de formularios al backend
         this.app.use(express.urlencoded({ extended: true }));
@@ -63,6 +63,20 @@ class Server {
             createParentPath: true
         }))
 
+        //session
+        this.app.use(session({
+            secret: 'tu_clave_secreta',
+            resave: false,
+            saveUninitialized: false,
+            cookie: { secure: false } // Pon esto en true si usas HTTPS
+        }));
+
+        //Comprobamos token y lo mostramos en todas las vistas
+        //this.app.use(validateJWTForViews);
+        this.app.use((req, res, next) => {
+            res.locals.user = req.session.user || null; // Asigna el usuario de la sesión (o null si no existe)
+            next();
+        });
         
 
     }
