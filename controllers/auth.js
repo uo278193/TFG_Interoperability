@@ -75,6 +75,7 @@ const logout = (req, res) => {
 const googleSignin = async (req, res = response) => {
 
     const { id_token } = req.body 
+    console.log("En google signin")
 
     try {
         const googleUser = await googleVerify( id_token )
@@ -106,12 +107,14 @@ const googleSignin = async (req, res = response) => {
 
         //Generate JWT
         const token = await generateJWT(user.id)
-
-        res.json({
-            msg:"All OK!",
-            token
-        })
-
+        req.session.user = {
+            email: user.email,
+            token:token
+        };
+        return res.status(200).json({
+            success: true,
+            token:token,
+        });
     } catch (error) {
         res.status(400).json({
             msg: "Invalid google_token"

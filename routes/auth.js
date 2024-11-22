@@ -25,7 +25,7 @@ router.post('/google',[
     validateFields
 ],googleSignin)
 
-router.get('/personalinfo',validateJWT,(req, res) => {
+router.get('/personalinfo',validateJWT ,(req, res) => {
     res.render('personalinfo');
 });
 

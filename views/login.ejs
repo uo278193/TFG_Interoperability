@@ -29,49 +29,9 @@
     </div>
     <div class="g_id_signin" data-type="standard"></div>
     
-    
-    <script>
-  // Obtén el formulario y maneja el evento de submit
-  const form = document.getElementById('login-form');
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevenir el envío del formulario tradicional
-
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    const data = { email, password };
-
-    try {
-      // Realizar la solicitud POST usando fetch
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Asegúrate de enviar los datos como JSON
-        },
-        body: JSON.stringify(data), // Convierte el objeto JavaScript en una cadena JSON
-      });
-
-      const result = await response.json();
-      
-      if (response.ok) {
-        console.log('Login successful:', result);
-        // Aquí puedes hacer algo con el token o los datos recibidos
-      } else {
-        console.log('Error:', result);
-      }
-    } catch (error) {
-      console.log('Error en la solicitud:', error);
-    }
-  });
-</script>
-    
-
-    <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+  
 
     <script>
-
-
 
         var url = ( window.location.hostname.includes('localhost') )
                     ?'http://localhost:8080/api/auth/google'
@@ -92,10 +52,7 @@
                         },
                         body: JSON.stringify({  id_token })
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Respuesta del backend:', data);
-                    })
+                    .then(data =>{ window.location.href = `/api/auth/personalinfo`;})
                     .catch(error => console.error('Error:', error));
         }
 
