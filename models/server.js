@@ -7,6 +7,8 @@ const { validateJWT,validateJWTForViews } = require('../middlewares/validate-jwt
 const path = require('path');
 const session = require('express-session');
 
+
+
 class Server {
 
     constructor() {
@@ -77,6 +79,8 @@ class Server {
             res.locals.user = req.session.user || null; // Asigna el usuario de la sesión (o null si no existe)
             next();
         });
+
+        
         
 
     }

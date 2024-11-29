@@ -1,133 +1,176 @@
-/* General */
+/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Navegador */
-nav {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #007bff;
+    padding: 15px 20px;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav .logo {
-    font-size: 1.5rem;
+  }
+  
+  .navbar-brand {
+    font-size: 20px;
     font-weight: bold;
-}
-
-nav ul {
+  }
+  
+  .navbar-menu {
     list-style: none;
-    display: flex;
-    gap: 15px;
     margin: 0;
     padding: 0;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
+    display: flex;
+  }
+  
+  .navbar-menu li {
+    margin-left: 20px;
+  }
+  
+  .navbar-menu a {
+    color: white;
     text-decoration: none;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-nav ul li a:hover {
-    background-color: #0056b3;
-}
-
-/* Títulos */
-h1, h2, h3 {
-    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-menu a:hover {
+    color: #ffdd57;
+  }
+  
+  /* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+  }
+  
+  /* Background with Geometric Design */
+  .background-container {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff5722 40%, #2196f3 60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Login Card */
+  .login-card {
+    background: white;
+    width: 350px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-}
-
-h1 {
-    font-size: 2rem;
+    position: relative;
+  }
+  
+  /* Avatar Style */
+  .avatar {
+    width: 80px;
+    height: 80px;
+    background: #2196f3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -60px auto 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .avatar img {
+    width: 60%;
+    border-radius: 50%;
+  }
+  
+  /* Title */
+  .login-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 20px;
-}
-
-/* Contenedor principal */
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Formularios */
-form {
+  }
+  
+  /* Form */
+  .login-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 20px;
-}
-
-label {
+  }
+  
+  /* Form Group */
+  .form-group {
+    text-align: left;
+  }
+  
+  .form-group label {
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-input, select, button {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .form-group input {
+    width: 100%;
     padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-input:focus, select:focus {
+    border: 1px solid #ddd;
+    border-radius: 6px;
     outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Botones */
-button {
-    background: #007BFF;
-    color: #fff;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus {
+    border-color: #2196f3;
+  }
+  
+  /* Form Options */
+  .form-options {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+  }
+  
+  .forgot-password {
+    color: #2196f3;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .forgot-password:hover {
+    color: #ff5722;
+  }
+  
+  /* Login Button */
+  .login-button {
+    background: #ff5722;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s;
-}
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background: #e64a19;
+  }
 
-button:hover {
-    background: #0056b3;
-}
-
-/* Ajustes para dispositivos pequeños */
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    input, select, button {
-        font-size: 0.9rem;
-    }
-}
+  .g_id_signin{
+    padding: 10px;
+    align-items: center;
+  }

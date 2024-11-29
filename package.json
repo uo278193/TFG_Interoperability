@@ -23,6 +23,15 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^5.12.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "babel-loader": "^9.2.1"
   }
 }

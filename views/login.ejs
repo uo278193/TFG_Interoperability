@@ -8,26 +8,49 @@
 
 </head>
 <body>
-  <%- include('partials/_nav') %>
-    <h1>Login</h1>
-    <form action="/api/auth/login" method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>   
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
+ 
+    <div class="background-container">
+        <div class="login-card">
+          <div class="avatar">
+            <img src="https://via.placeholder.com/80" alt="Avatar">
+          </div>
+          <h2 class="login-title">My Account</h2>
+          <form class="login-form" action="/api/auth/login" method="post">
+            <div class="form-group">
+              <label for="email">
+                <i class="fas fa-user"></i> Login
+              </label>
+              <input type="text" id="email" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+              <label for="password">
+                <i class="fas fa-lock"></i> Password
+              </label>
+              <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <div class="form-options">
+              <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-button">Sign in</button>
+          </form>
+
+          
+          <div class="g_id_signin" data-type="standard">
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
+          <div id="g_id_onload"
+               data-client_id="713188700274-j3iirib1j0qvd0n5b63eirvb67k7in6o.apps.googleusercontent.com"
+               data-callback="onSignIn">
+          </div>
+          </div> 
+        </div>
+
+      
+
+      </div>
+
+
+
     
-
-
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload"
-         data-client_id="713188700274-j3iirib1j0qvd0n5b63eirvb67k7in6o.apps.googleusercontent.com"
-         data-callback="onSignIn">
-    </div>
-    <div class="g_id_signin" data-type="standard"></div> 
     
   
 
