@@ -4,7 +4,7 @@
             <li><a href="/api/auth/personalinfo">Perfil</a></li>
             <li id="user-email">Correo: <%= user.email %></li>
             <form action="/api/auth/logout" method="POST">
-                <button type="submit">Cerrar Sesión</button>
+                <button id="botonLogout" type="submit">Cerrar Sesión</button>
             </form>
         <% } else { %> 
             <li><a href="/api/auth/login">Iniciar Sesión</a></li>

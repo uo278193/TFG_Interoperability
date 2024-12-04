@@ -2,8 +2,11 @@
 button {
   background: #634cf6;
   color: rgb(0, 0, 0);
- 
   transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#botonLogout{
+  background-color: transparent; 
 }
 
 button:hover {
