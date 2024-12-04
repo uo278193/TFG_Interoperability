@@ -1,47 +1,42 @@
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-  }
-  
-  /* Navbar Styles */
-  .navbar {
-    background-color: #007bff;
-    padding: 15px 20px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-brand {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .navbar-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .navbar-menu li {
-    margin-left: 20px;
-  }
-  
-  .navbar-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-menu a:hover {
-    color: #ffdd57;
-  }
+
+button {
+  background: #634cf6;
+  color: rgb(0, 0, 0);
+ 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.20); /* Aumenta ligeramente el tamaño al interactuar */
+}
+
+/* Estilo para la navbar */
+.navbar {
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%; /* Abarca todo el ancho de la ventana */
+  background: radial-gradient(circle at 10% 20%, rgb(137, 162, 240) 0%, rgb(229, 248, 250) 90%);
+  color: rgb(0, 0, 0);
+  /* padding: 10px 20px; */
+  z-index: 1000; /* Asegura que la navbar esté por encima del contenido */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
   
   /* General Reset */
 body {
@@ -59,7 +54,7 @@ body {
   .background-container {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #ff5722 40%, #2196f3 60%);
+    background: radial-gradient(circle at 10% 20%, rgb(137, 162, 240) 0%, rgb(229, 248, 250) 90%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +75,7 @@ body {
   .avatar {
     width: 80px;
     height: 80px;
-    background: #2196f3;
+    background: rgb(137, 162, 240);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -133,7 +128,7 @@ body {
   }
   
   .form-group input:focus {
-    border-color: #2196f3;
+    border-color: rgb(137, 162, 240);
   }
   
   /* Form Options */
@@ -144,18 +139,18 @@ body {
   }
   
   .forgot-password {
-    color: #2196f3;
+    color: rgb(137, 162, 240);
     text-decoration: none;
     transition: color 0.3s;
   }
   
   .forgot-password:hover {
-    color: #ff5722;
+    color: rgb(59, 101, 225);
   }
   
   /* Login Button */
   .login-button {
-    background: #ff5722;
+    background: rgb(137, 162, 240);
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -163,11 +158,12 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease transform 0.2s;
   }
   
   .login-button:hover {
-    background: #e64a19;
+    background: #3875e6;
+    transform: scale(1.10);
   }
 
   .g_id_signin{

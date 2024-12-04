@@ -1,15 +1,11 @@
 <nav class="navbar">
     <ul class="navbar-menu">
-        <li><a href="/">Inicio</a></li>
-
         <% if (user) { %> 
             <li><a href="/api/auth/personalinfo">Perfil</a></li>
+            <li id="user-email">Correo: <%= user.email %></li>
             <form action="/api/auth/logout" method="POST">
                 <button type="submit">Cerrar Sesión</button>
             </form>
-            
-            
-            <li id="user-email">Correo: <%= user.email %></li>
         <% } else { %> 
             <li><a href="/api/auth/login">Iniciar Sesión</a></li>
             <li><a href="/api/auth/singup">Registrarse</a></li>
