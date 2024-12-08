@@ -2,6 +2,8 @@ const { response, request } = require('express')
 const bcryptjs =  require('bcryptjs')
 
 const User = require('../models/user')
+const { render } = require('ejs')
+const { generateJWT } = require('../helpers/generate-jwt')
 
 const usersGet = async (req = request, res = response) => {
 
@@ -51,11 +53,12 @@ const usersPost = async (req, res = response) => {
 
     //save user
     await user.save()
-
-    res.json({
-        message: 'post API - controller',
-        user
-    })
+    const token = await generateJWT(user.id)
+    res.render('personalinfo',{user:user.email,token:token})
+    // res.json({
+    //     message: 'post API - controller',
+    //     user
+    // })
 }
 
 const usersPatch = (req, res = response) => {
